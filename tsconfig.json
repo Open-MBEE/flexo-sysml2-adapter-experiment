@@ -1,0 +1,15 @@
+{
+	"extends": "@blake.regalia/tsconfig/tsconfig.node.json",
+
+	"compilerOptions": {
+		"baseUrl": ".",
+		"outDir": "dist",
+
+		"declaration": true,
+		"declarationDir": "dist"
+	},
+
+	"include": [
+		"src/**/*.ts", "scrap/convert-uml.ts",
+	]
+}

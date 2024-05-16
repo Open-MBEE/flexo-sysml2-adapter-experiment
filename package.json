@@ -1,0 +1,28 @@
+{
+  "name": "flexo-sysml2-adapter",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@blake.regalia/belt": "^0.35.6",
+    "@graphy/content.ttl.write": "^4.3.7",
+    "@graphy/core.data.factory": "^4.3.7",
+    "fast-xml-parser": "^4.3.6",
+    "node-xml-stream-parser": "^1.0.12"
+  },
+  "devDependencies": {
+    "@blake.regalia/eslint-config-elite": "^0.4.4",
+    "@blake.regalia/tsconfig": "^0.2.0",
+    "@types/node": "^20.12.11",
+    "@typescript-eslint/parser": "^7.9.0",
+    "eslint": "^9.2.0",
+    "ts-toolbelt": "^9.6.0",
+    "typescript": "^5.4.5"
+  }
+}
