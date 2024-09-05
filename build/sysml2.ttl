@@ -1,0 +1,383 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace/> .
+@prefix shacl: <http://www.w3.org/ns/shacl#> .
+@prefix flexo-graph: <https://flexo.openmbee.org/rdf//graph/> .
+@prefix flexo-ontology: <https://flexo.openmbee.org/rdf//ontology/> .
+@prefix flexo-property: <https://flexo.openmbee.org/rdf//property/> .
+@prefix flexo-derived-property: <https://flexo.openmbee.org/rdf//derived-property/> .
+@prefix flexo-class: <https://flexo.openmbee.org/rdf//class/> .
+@prefix flexo-element: <https://flexo.openmbee.org/rdf//element/> .
+@prefix flexo-shape: <https://flexo.openmbee.org/rdf//shape/> .
+@prefix flexo-artifact: <https://flexo.openmbee.org/rdf//artifact/> .
+@prefix flexo-index: <https://flexo.openmbee.org/rdf//index/> .
+@prefix xmi: <http://www.omg.org/spec/XMI/20131001#> .
+@prefix uml: <http://www.omg.org/spec/UML/20161101#> .
+@prefix uml-model: <https://www.omg.org/spec/UML/20161101/UML.xmi#> .
+@prefix uml-model-dt: <https://www.omg.org/spec/UML/20161101/UML.xmi#datatype/> .
+@prefix uml-primitives: <https://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi#> .
+@prefix element: <https://flexo.openmbee.org/rdf//sysml2/element/> .
+@prefix property: <https://flexo.openmbee.org/rdf//sysml2/property/> .
+@prefix uml-import: <https://flexo.openmbee.org/rdf//uml-import/> .
+@prefix omg-ocl: <http://www.omg.org/spec/OCL> .
+@prefix omg-ocl2: <http://www.omg.org/spec/OCL/2.0> .
+element:Activities xmi:type uml:Package ;
+	xmi:id "Activities" ;
+	uml-model:name "Activities" .
+
+element:Activity xmi:type uml:Class ;
+	xmi:id "Activity" ;
+	uml-model:name "Activity" .
+
+element:Activity rdfs:comment "'An Activity is the specification of parameterized Behavior as the coordinated sequencing of subordinate units."@en .
+
+element:Activity-maximum_one_parameter_node rdfs:comment "'A Parameter with direction other than inout must have exactly one ActivityParameterNode in an Activity."@en .
+
+element:Activity-maximum_one_parameter_node a uml:Constraint ;
+	uml-model:specification element:Activity-maximum_one_parameter_node-_specification .
+
+element:Activity-maximum_one_parameter_node-_specification a uml:OpaqueExpression ;
+	uml-model:body "undefined" .
+
+element:Activity uml-model:rule element:Activity-maximum_one_parameter_node .
+
+element:Activity-maximum_two_parameter_nodes rdfs:comment "'A Parameter with direction inout must have exactly two ActivityParameterNodes in an Activity, at most one with incoming ActivityEdges and at most one with outgoing ActivityEdges."@en .
+
+element:Activity-maximum_two_parameter_nodes a uml:Constraint ;
+	uml-model:specification element:Activity-maximum_two_parameter_nodes-_specification .
+
+element:Activity-maximum_two_parameter_nodes-_specification a uml:OpaqueExpression ;
+	uml-model:body "undefined" .
+
+element:Activity uml-model:rule element:Activity-maximum_two_parameter_nodes .
+
+element:Activity rdfs:subClassOf element:Behavior .
+
+property:Activity-edge a owl:ObjectProperty ;
+	xmi:type uml:Property ;
+	xmi:id "Activity-edge" ;
+	rdfs:label "Activity-edge" ;
+	uml-model:name "edge" ;
+	uml-model:compositeAggregation true ;
+	rdfs:range element:ActivityEdge .
+
+property:Activity-edge rdfs:comment "'ActivityEdges expressing flow between the nodes of the Activity."@en .
+
+property:Activity-group a owl:ObjectProperty ;
+	xmi:type uml:Property ;
+	xmi:id "Activity-group" ;
+	rdfs:label "Activity-group" ;
+	uml-model:name "group" ;
+	uml-model:compositeAggregation true ;
+	rdfs:range element:ActivityGroup .
+
+property:Activity-group rdfs:comment "'Top-level ActivityGroups in the Activity."@en .
+
+property:Activity-isReadOnly a owl:DatatypeProperty ;
+	xmi:type uml:Property ;
+	xmi:id "Activity-isReadOnly" ;
+	rdfs:label "Activity-isReadOnly" ;
+	uml-model:name "isReadOnly" .
+
+property:Activity-isReadOnly rdfs:range uml-primitives:Boolean .
+
+property:Activity-isReadOnly rdfs:comment "'If true, this Activity must not make any changes to objects. The default is false (an Activity may make nonlocal changes). (This is an assertion, not an executable property. It may be used by an execution engine to optimize model execution. If the assertion is violated by the Activity, then the model is ill-formed.) "@en .
+
+element:Activity-isReadOnly-_defaultValue xmi:type uml:LiteralBoolean ;
+	xmi:id "Activity-isReadOnly-_defaultValue" .
+
+property:Activity-isReadOnly xmi:defaultValue element:Activity-isReadOnly-_defaultValue .
+
+property:Activity-isSingleExecution a owl:DatatypeProperty ;
+	xmi:type uml:Property ;
+	xmi:id "Activity-isSingleExecution" ;
+	rdfs:label "Activity-isSingleExecution" ;
+	uml-model:name "isSingleExecution" .
+
+property:Activity-isSingleExecution rdfs:range uml-primitives:Boolean .
+
+property:Activity-isSingleExecution rdfs:comment "'If true, all invocations of the Activity are handled by the same execution."@en .
+
+element:Activity-isSingleExecution-_defaultValue xmi:type uml:LiteralBoolean ;
+	xmi:id "Activity-isSingleExecution-_defaultValue" .
+
+property:Activity-isSingleExecution xmi:defaultValue element:Activity-isSingleExecution-_defaultValue .
+
+property:Activity-node a owl:ObjectProperty ;
+	xmi:type uml:Property ;
+	xmi:id "Activity-node" ;
+	rdfs:label "Activity-node" ;
+	uml-model:name "node" ;
+	uml-model:compositeAggregation true ;
+	rdfs:range element:ActivityNode .
+
+property:Activity-node rdfs:comment "'ActivityNodes coordinated by the Activity."@en .
+
+property:Activity-partition a owl:ObjectProperty ;
+	xmi:type uml:Property ;
+	xmi:id "Activity-partition" ;
+	rdfs:label "Activity-partition" ;
+	uml-model:name "partition" ;
+	rdfs:range element:ActivityPartition .
+
+property:Activity-partition rdfs:comment "'Top-level ActivityPartitions in the Activity."@en .
+
+property:Activity-structuredNode a owl:ObjectProperty ;
+	xmi:type uml:Property ;
+	xmi:id "Activity-structuredNode" ;
+	rdfs:label "Activity-structuredNode" ;
+	uml-model:name "structuredNode" ;
+	uml-model:compositeAggregation true ;
+	rdfs:range element:StructuredActivityNode .
+
+property:Activity-structuredNode rdfs:comment "'Top-level StructuredActivityNodes in the Activity."@en .
+
+property:Activity-variable a owl:ObjectProperty ;
+	xmi:type uml:Property ;
+	xmi:id "Activity-variable" ;
+	rdfs:label "Activity-variable" ;
+	uml-model:name "variable" ;
+	uml-model:compositeAggregation true ;
+	rdfs:range element:Variable .
+
+property:Activity-variable rdfs:comment "'Top-level Variables defined by the Activity."@en .
+
+element:ActivityEdge xmi:type uml:Class ;
+	xmi:id "ActivityEdge" ;
+	uml-model:name "ActivityEdge" .
+
+element:ActivityEdge rdfs:comment "'An ActivityEdge is an abstract class for directed connections between two ActivityNodes."@en .
+
+element:ActivityEdge-source_and_target rdfs:comment "'If an ActivityEdge is directly owned by an Activity, then its source and target must be directly or indirectly contained in the same Activity."@en .
+
+element:ActivityEdge-source_and_target a uml:Constraint ;
+	uml-model:specification element:ActivityEdge-source_and_target-_specification .
+
+element:ActivityEdge-source_and_target-_specification a uml:OpaqueExpression ;
+	uml-model:body "undefined" .
+
+element:ActivityEdge uml-model:rule element:ActivityEdge-source_and_target .
+
+element:ActivityEdge rdfs:subClassOf element:RedefinableElement .
+
+property:ActivityEdge-activity a owl:ObjectProperty ;
+	xmi:type uml:Property ;
+	xmi:id "ActivityEdge-activity" ;
+	rdfs:label "ActivityEdge-activity" ;
+	uml-model:name "activity" ;
+	rdfs:range element:Activity .
+
+property:ActivityEdge-activity rdfs:comment "'The Activity containing the ActivityEdge, if it is directly owned by an Activity."@en .
+
+property:ActivityEdge-guard a owl:ObjectProperty ;
+	xmi:type uml:Property ;
+	xmi:id "ActivityEdge-guard" ;
+	rdfs:label "ActivityEdge-guard" ;
+	uml-model:name "guard" ;
+	uml-model:compositeAggregation true ;
+	rdfs:range element:ValueSpecification .
+
+property:ActivityEdge-guard rdfs:comment "'A ValueSpecification that is evaluated to determine if a token can traverse the ActivityEdge. If an ActivityEdge has no guard, then there is no restriction on tokens traversing the edge."@en .
+
+property:ActivityEdge-inGroup a owl:ObjectProperty ;
+	xmi:type uml:Property ;
+	xmi:id "ActivityEdge-inGroup" ;
+	rdfs:label "ActivityEdge-inGroup" ;
+	uml-model:name "inGroup" ;
+	rdfs:range element:ActivityGroup .
+
+property:ActivityEdge-inGroup rdfs:comment "'ActivityGroups containing the ActivityEdge."@en .
+
+property:ActivityEdge-inPartition a owl:ObjectProperty ;
+	xmi:type uml:Property ;
+	xmi:id "ActivityEdge-inPartition" ;
+	rdfs:label "ActivityEdge-inPartition" ;
+	uml-model:name "inPartition" ;
+	rdfs:range element:ActivityPartition .
+
+property:ActivityEdge-inPartition rdfs:comment "'ActivityPartitions containing the ActivityEdge."@en .
+
+property:ActivityEdge-inStructuredNode a owl:ObjectProperty ;
+	xmi:type uml:Property ;
+	xmi:id "ActivityEdge-inStructuredNode" ;
+	rdfs:label "ActivityEdge-inStructuredNode" ;
+	uml-model:name "inStructuredNode" ;
+	rdfs:range element:StructuredActivityNode .
+
+property:ActivityEdge-inStructuredNode rdfs:comment "'The StructuredActivityNode containing the ActivityEdge, if it is owned by a StructuredActivityNode."@en .
+
+property:ActivityEdge-interrupts a owl:ObjectProperty ;
+	xmi:type uml:Property ;
+	xmi:id "ActivityEdge-interrupts" ;
+	rdfs:label "ActivityEdge-interrupts" ;
+	uml-model:name "interrupts" ;
+	rdfs:range element:InterruptibleActivityRegion .
+
+property:ActivityEdge-interrupts rdfs:comment "'The InterruptibleActivityRegion for which this ActivityEdge is an interruptingEdge."@en .
+
+property:ActivityEdge-redefinedEdge a owl:ObjectProperty ;
+	xmi:type uml:Property ;
+	xmi:id "ActivityEdge-redefinedEdge" ;
+	rdfs:label "ActivityEdge-redefinedEdge" ;
+	uml-model:name "redefinedEdge" ;
+	rdfs:range element:ActivityEdge .
+
+property:ActivityEdge-redefinedEdge rdfs:comment "'ActivityEdges from a generalization of the Activity containing this ActivityEdge that are redefined by this ActivityEdge."@en .
+
+property:ActivityEdge-source a owl:ObjectProperty ;
+	xmi:type uml:Property ;
+	xmi:id "ActivityEdge-source" ;
+	rdfs:label "ActivityEdge-source" ;
+	uml-model:name "source" ;
+	rdfs:range element:ActivityNode .
+
+property:ActivityEdge-source rdfs:comment "'The ActivityNode from which tokens are taken when they traverse the ActivityEdge."@en .
+
+property:ActivityEdge-target a owl:ObjectProperty ;
+	xmi:type uml:Property ;
+	xmi:id "ActivityEdge-target" ;
+	rdfs:label "ActivityEdge-target" ;
+	uml-model:name "target" ;
+	rdfs:range element:ActivityNode .
+
+property:ActivityEdge-target rdfs:comment "'The ActivityNode to which tokens are put when they traverse the ActivityEdge."@en .
+
+property:ActivityEdge-weight a owl:ObjectProperty ;
+	xmi:type uml:Property ;
+	xmi:id "ActivityEdge-weight" ;
+	rdfs:label "ActivityEdge-weight" ;
+	uml-model:name "weight" ;
+	uml-model:compositeAggregation true ;
+	rdfs:range element:ValueSpecification .
+
+property:ActivityEdge-weight rdfs:comment "'The minimum number of tokens that must traverse the ActivityEdge at the same time. If no weight is specified, this is equivalent to specifying a constant value of 1."@en .
+
+element:ActivityEdge-isConsistentWith-spec a uml:Constraint ;
+	uml-model:specification element:ActivityEdge-isConsistentWith-spec-_specification .
+
+element:ActivityEdge-isConsistentWith-spec-_specification a uml:OpaqueExpression ;
+	uml-model:body "undefined" .
+
+element:ActivityFinalNode xmi:type uml:Class ;
+	xmi:id "ActivityFinalNode" ;
+	uml-model:name "ActivityFinalNode" .
+
+element:ActivityFinalNode rdfs:comment "'An ActivityFinalNode is a FinalNode that terminates the execution of its owning Activity or StructuredActivityNode."@en .
+
+element:ActivityFinalNode rdfs:subClassOf element:FinalNode .
+
+element:ActivityGroup xmi:type uml:Class ;
+	xmi:id "ActivityGroup" ;
+	uml-model:name "ActivityGroup" .
+
+element:ActivityGroup rdfs:comment "'ActivityGroup is an abstract class for defining sets of ActivityNodes and ActivityEdges in an Activity."@en .
+
+element:ActivityGroup-nodes_and_edges rdfs:comment "'All containedNodes and containeEdges of an ActivityGroup must be in the same Activity as the group."@en .
+
+element:ActivityGroup-nodes_and_edges a uml:Constraint ;
+	uml-model:specification element:ActivityGroup-nodes_and_edges-_specification .
+
+element:ActivityGroup-nodes_and_edges-_specification a uml:OpaqueExpression ;
+	uml-model:body "undefined" .
+
+element:ActivityGroup uml-model:rule element:ActivityGroup-nodes_and_edges .
+
+element:ActivityGroup-not_contained rdfs:comment "'No containedNode or containedEdge of an ActivityGroup may be contained by its subgroups or its superGroups, transitively."@en .
+
+element:ActivityGroup-not_contained a uml:Constraint ;
+	uml-model:specification element:ActivityGroup-not_contained-_specification .
+
+element:ActivityGroup-not_contained-_specification a uml:OpaqueExpression ;
+	uml-model:body "undefined" .
+
+element:ActivityGroup uml-model:rule element:ActivityGroup-not_contained .
+
+element:ActivityGroup rdfs:subClassOf element:NamedElement .
+
+property:ActivityGroup-containedEdge a owl:ObjectProperty ;
+	xmi:type uml:Property ;
+	xmi:id "ActivityGroup-containedEdge" ;
+	rdfs:label "ActivityGroup-containedEdge" ;
+	uml-model:name "containedEdge" ;
+	rdfs:range element:ActivityEdge .
+
+property:ActivityGroup-containedEdge rdfs:comment "'ActivityEdges immediately contained in the ActivityGroup."@en .
+
+property:ActivityGroup-containedNode a owl:ObjectProperty ;
+	xmi:type uml:Property ;
+	xmi:id "ActivityGroup-containedNode" ;
+	rdfs:label "ActivityGroup-containedNode" ;
+	uml-model:name "containedNode" ;
+	rdfs:range element:ActivityNode .
+
+property:ActivityGroup-containedNode rdfs:comment "'ActivityNodes immediately contained in the ActivityGroup."@en .
+
+property:ActivityGroup-inActivity a owl:ObjectProperty ;
+	xmi:type uml:Property ;
+	xmi:id "ActivityGroup-inActivity" ;
+	rdfs:label "ActivityGroup-inActivity" ;
+	uml-model:name "inActivity" ;
+	rdfs:range element:Activity .
+
+property:ActivityGroup-inActivity rdfs:comment "'The Activity containing the ActivityGroup, if it is directly owned by an Activity."@en .
+
+property:ActivityGroup-subgroup a owl:ObjectProperty ;
+	xmi:type uml:Property ;
+	xmi:id "ActivityGroup-subgroup" ;
+	rdfs:label "ActivityGroup-subgroup" ;
+	uml-model:name "subgroup" ;
+	uml-model:compositeAggregation true ;
+	rdfs:range element:ActivityGroup .
+
+property:ActivityGroup-subgroup rdfs:comment "'Other ActivityGroups immediately contained in this ActivityGroup."@en .
+
+property:ActivityGroup-superGroup a owl:ObjectProperty ;
+	xmi:type uml:Property ;
+	xmi:id "ActivityGroup-superGroup" ;
+	rdfs:label "ActivityGroup-superGroup" ;
+	uml-model:name "superGroup" ;
+	rdfs:range element:ActivityGroup .
+
+property:ActivityGroup-superGroup rdfs:comment "'The ActivityGroup immediately containing this ActivityGroup, if it is directly owned by another ActivityGroup."@en .
+
+element:ActivityGroup-containingActivity-spec a uml:Constraint ;
+	uml-model:specification element:ActivityGroup-containingActivity-spec-_specification .
+
+element:ActivityGroup-containingActivity-spec-_specification a uml:OpaqueExpression ;
+	uml-model:body "undefined" .
+
+element:ActivityNode xmi:type uml:Class ;
+	xmi:id "ActivityNode" ;
+	uml-model:name "ActivityNode" .
+
+element:ActivityNode rdfs:comment "'ActivityNode is an abstract class for points in the flow of an Activity connected by ActivityEdges."@en .
+
+element:ActivityNode rdfs:subClassOf element:RedefinableElement .
+
+property:ActivityNode-activity a owl:ObjectProperty ;
+	xmi:type uml:Property ;
+	xmi:id "ActivityNode-activity" ;
+	rdfs:label "ActivityNode-activity" ;
+	uml-model:name "activity" ;
+	rdfs:range element:Activity .
+
+property:ActivityNode-activity rdfs:comment "'The Activity containing the ActivityNode, if it is directly owned by an Activity."@en .
+
+property:ActivityNode-inGroup a owl:ObjectProperty ;
+	xmi:type uml:Property ;
+	xmi:id "ActivityNode-inGroup" ;
+	rdfs:label "ActivityNode-inGroup" ;
+	uml-model:name "inGroup" ;
+	rdfs:range element:ActivityGroup .
+
+property:ActivityNode-inGroup rdfs:comment "'ActivityGroups containing the ActivityNode."@en .
+
+property:ActivityNode-inInterruptibleRegion a owl:ObjectProperty ;
+	xmi:type uml:Property ;
+	xmi:id "ActivityNode-inInterruptibleRegion" ;
+	rdfs:label "ActivityNode-inInterruptibleRegion" ;
+	uml-model:name "inInterruptibleRegion" ;
+	rdfs:range element:InterruptibleActivityRegion .
+
