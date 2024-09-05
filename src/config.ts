@@ -1,4 +1,4 @@
-const p_flexo_base = 'https://flexo.openmbee.org/rdf/';
+const p_flexo_base = 'https://flexo.openmbee.org/rdf';
 
 export const GC_APP = {
 	prefixes: {
@@ -11,21 +11,6 @@ export const GC_APP = {
 
 		// project-specific named graph IRIs
 		'flexo-graph': `${p_flexo_base}/graph/`,
-
-		// class definitions that extend UML classes or define novel metamodel concepts for the MMS4 element storage architecture
-		'flexo-ontology': `${p_flexo_base}/ontology/`,
-
-		// instantiations of concepts from the metamodel to create MMS4 element property definitions that proxy UML properties
-		'flexo-property': `${p_flexo_base}/property/`,
-
-		// underscored properties from the MMS4 UML+JSON dump
-		'flexo-derived-property': `${p_flexo_base}/derived-property/`,
-
-		// for describing concepts specific to MMS4 data managaement, e.g., project Visibility
-		'flexo-class': `${p_flexo_base}/class/`,
-
-		// all MMS4 elements by their UUID
-		'flexo-element': `${p_flexo_base}/element/`,
 
 		// for creating optional ShEx shapes that reflect UML concepts
 		'flexo-shape': `${p_flexo_base}/shape/`,
@@ -40,6 +25,12 @@ export const GC_APP = {
 
 		// directly mapped concepts from the UML 2.5.1 metamodel
 		'uml-model': 'https://www.omg.org/spec/UML/20161101/UML.xmi#',
+
+		// separate namespace for UML properties
+		'uml-property': 'https://www.omg.org/spec/UML/20161101/UML.xmi#property/',
+
+		// separate namespace for UML elements
+		'uml-element': 'https://www.omg.org/spec/UML/20161101/UML.xmi#property/',
 
 		// separate namespace for datatypes of RDF literals adapted from UML datatypes
 		'uml-model-dt': 'https://www.omg.org/spec/UML/20161101/UML.xmi#datatype/',
